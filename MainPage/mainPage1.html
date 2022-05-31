@@ -2687,7 +2687,7 @@
             var type = r.querySelector('.showcase-caption center:nth-child(2) titre6 font:nth-child(2)').textContent.trim();
             var link = r.querySelector('.showcase-content a').href;
             link = new ModuleRequest(link, 'get', emptyKeyValue, null);
-            donnes.push(new Data(image, title, '','',type,'','',false,link));
+            donnes.push(new Data(image, '', '',title,type,'','',false,link));
         }
 
         let layout = new Layout(new Insets(0, 0, 0, 0), 1, 1, 1, 1, 0, new Size(400, 105), new Ratio('width', 4, 10), new Size(0, 0), 0, 0);
