@@ -854,7 +854,7 @@
             }  
             var check = document.querySelectorAll('.inner ul li a ');
             for (c of check){
-                var epi = c.innerText;
+                var epi = c.textContent.trim();
                 var link = c.href;
                 var chapitre = new Chapter(epi, new ModuleRequest(link, 'get', emptyKeyValue, null), false);
                 filt.push(chapitre);
@@ -867,7 +867,7 @@
         }
         
         let infoPageObject = new Info(new ModuleRequest('', '', emptyKeyValue, null), new Extra([new Commands('', emptyKeyValue)], emptyKeyValue), new JavascriptConfig(false, false, ''),
-        new Output(image, title, parsedJson.request, desc, genres, duree, date, type, 'Eps: '  + episodes.length, episodes));
+        new Output(image, title, parsedJson.request, desc, genres, date, duree, type, 'Eps: '  + episodes.length, episodes));
         var finalJson = JSON.stringify(infoPageObject);
         savedData.innerHTML = finalJson;
         </script>
