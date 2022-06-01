@@ -3,10 +3,10 @@
     "moduleName": "IAnime",
     "moduleInitials": "IA",
     "moduleDesc": "le meilleur module pour regarder des series, animes, films, dramas et autres en vf et vostfr",
-    "developer": "GalsenDev|SN",
+    "developer": "Danyspb4ever",
     "moduleID": "151561516151651 ",
     "moduleImage": "https://www.ianimes.org/img/i-anime.png",
-    "moduleVersion": 1.125,
+    "moduleVersion": 1.126,
     "moduleLenguage": "VF",
     "moduleType": "Video",
     "baseURL": "https://www.ianimes.org/index.php",
@@ -154,7 +154,7 @@
   "search": [
     {
       "request": {
-        "url": "https://www.ianimes.org/page/<page>/=<searched>",
+        "url": "https://www.ianimes.org/resultat+JUMPER.html",
         "method": "get",
         "headers": [
           {
