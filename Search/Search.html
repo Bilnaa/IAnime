@@ -844,8 +844,21 @@
     var image = mg.substr(0,78);
     image = new ModuleRequest(image, 'get', emptyKeyValue, null);
     var link = document.querySelector('.content-inner center center center center table tbody :nth-child(4) td center a').href;
+    var ty = document.querySelector('.content-inner center center center center table tbody :nth-child(4) td center a headline11').textContent.trim();
+    if(ty.includes('Film')){
+        type = 'Film';
+    }
+    if(ty.includes('anime')){
+        type = 'Anime';
+    }
+    if(ty.includes('Hentai')){
+        type = 'Hentai';
+    }
+    if(ty.includes('Série')){
+        type = 'Serie';
+    }
     link = new ModuleRequest(link, 'get', emptyKeyValue, null);
-    var fina = new Data(image, title, '', '', '', '', '', false, link);;
+    var fina = new Data(image, title, '', '', type, '', '', false, link);;
     donnees.push(fina);
 
     var testLayout = new Layout(new Insets(10, 10, 10, 10), 1, 2, 3, 1, 500, new Size(400, 400), new Ratio('width', 4, 11), new Size(0, 0), 10, 10);
