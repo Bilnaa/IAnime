@@ -838,10 +838,10 @@
     let output = [];
     let emptyKeyValue = [new KeyValue('','')];
     var donnees = [];
-    
+
     var title = document.querySelector('.content-inner center center center center table tbody tr td center span titre6').textContent.trim();
     var mg = document.querySelector('.content-inner center center center center table tbody :nth-child(2) td center div').style.backgroundImage.substr('5');
-    var image = mg.substr(0,67);
+    var image = mg.substr(0,78);
     image = new ModuleRequest(image, 'get', emptyKeyValue, null);
     var link = document.querySelector('.content-inner center center center center table tbody :nth-child(4) td center a').href;
     link = new ModuleRequest(link, 'get', emptyKeyValue, null);
