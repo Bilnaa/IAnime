@@ -7506,7 +7506,7 @@
            var dat = rec[i].querySelectorAll('table tbody');
            for (don of dat){
                var mg = don.querySelector('tr:nth-child(2) td center div').style.backgroundImage.substr(5);
-               var image = mg.replaceAll('\"','');
+               var image = mg.replaceAll('\"\\)','');
                image = new ModuleRequest(image, 'get', emptyKeyValue, null);
                var link = don.querySelector('tr:nth-child(2) td center div a ').href;
                link = new ModuleRequest(link, 'get', emptyKeyValue, null);
@@ -7514,7 +7514,7 @@
                var annee = don.querySelector('tr:nth-child(3) td:nth-child(2) headline2 center font font').textContent.trim();
                var type = don.querySelector('tr:nth-child(3) td:nth-child(3) headline2 center font ').textContent;
                var title = don.querySelector('tr:nth-child(1) span').textContent.trim();
-               donnes.push(new Data(image, title, '',duree,annee,type,'',false,link));
+               donnes.push(new Data(image, title, type,duree,annee,'','',false,link));
 
            }       
         }
