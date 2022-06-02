@@ -7506,7 +7506,7 @@
            var dat = rec[i].querySelectorAll('table tbody');
            for (don of dat){
                var mg = don.querySelector('tr:nth-child(2) td center div').style.backgroundImage.substr(5);
-               var image = mg.substr(0,78);
+               var image = mg.replaceAll('\"','');
                image = new ModuleRequest(image, 'get', emptyKeyValue, null);
                var link = don.querySelector('tr:nth-child(2) td center div a ').href;
                link = new ModuleRequest(link, 'get', emptyKeyValue, null);
