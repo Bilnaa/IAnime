@@ -2666,22 +2666,15 @@
                 link = new ModuleRequest(link, 'get', emptyKeyValue, null);
                 donnes.push(new Data(image, title, '',epis,type,'','',false,link));
             }
-        
-                let ok = [];
-                let dat = {};
-                            
-                for (let i in donnes) {
-                    compare = donnes[i].title;
-                    compa  = donnes[i].type;
-                    dat[compare] = donnes[i];
-                    dat[compa] = donnes[i];
-                }          
-                for (i in dat) {
-                    ok.push(dat[i]);
-                }
-                    
+                var result = donnes.reduce((unique, o) => {
+                if(!unique.some(obj => obj.title === o.title)) {
+                            unique.push(o);
+                    }
+                    return unique;
+                },[]);
+                
 
-        output.push(new Output(CellDesings.normal1, Orientation.horizontal, DefaultLayouts.longTripletsDouble, Paging.leading, new Section('Animes Récemment ajoutés :', true), null, ok));
+        output.push(new Output(CellDesings.normal1, Orientation.horizontal, DefaultLayouts.longTripletsDouble, Paging.leading, new Section('Animes Récemment ajoutés :', true), null, result));
         let MainPageObject = new MainPage(new ModuleRequest('https://www.ianimes.org/drama.php', 'get', emptyKeyValue,null),
         new Extra([new Commands('', emptyKeyValue)], emptyKeyValue), new JavascriptConfig(true,false, ''), output);
         var finalJson = JSON.stringify(MainPageObject);
