@@ -214,7 +214,21 @@
             donnes.push(new Data(image, '',type, title, 'Top 30', '', '', false, link));
         }
     }
-    output.push(new Output(CellDesings.wide11, Orientation.horizontal, DefaultLayouts.wideFull, Paging.leading, new Section('Le top 30 Animes :', true), null, donnes));
+
+                let ok = [];
+                let dat = {};
+                            
+                for (let i in donnes) {
+                    compare = donnes[i].title;
+                    compa  = donnes[i].type;
+                    dat[compare] = donnes[i];
+                    dat[compa] = donnes[i];
+                }          
+                for (i in dat) {
+                    ok.push(dat[i]);
+                }
+
+    output.push(new Output(CellDesings.wide11, Orientation.horizontal, DefaultLayouts.wideFull, Paging.leading, new Section('Le top 30 Animes :', true), null, ok));
     let MainPageObject = new MainPage(new ModuleRequest('https://www.ianimes.org/index.php', 'get', emptyKeyValue,null),
     new Extra([new Commands('', emptyKeyValue)], emptyKeyValue),
     new JavascriptConfig(true,false, ''), output);

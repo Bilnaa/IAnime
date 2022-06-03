@@ -2653,21 +2653,35 @@
         var parsedJson = JSON.parse(savedData.innerHTML);
         let output = parsedJson.output;
         let emptyKeyValue = [new KeyValue('', '')];
-        var dat = [];
         var donnes = [];
-        var rec = document.querySelectorAll('#my_poststypewidget-3 center table tbody');
+        var rec = document.querySelectorAll('#my_poststypewidget-3 center table');
             for (don of rec) {
                 var mg = don.querySelector('tbody tr:nth-child(2) td center div').style.backgroundImage.substr(5);
                 var image = mg.split(')')[0].trim().replace('\"', '');
                 image = new ModuleRequest(image, 'get', emptyKeyValue, null);
-                title = don.querySelector('table tbody tr td center span ').textContent.replaceAll('\\n','');
+                title = don.querySelector('tbody tr:nth-child(2) td center div a').title.trim();
                 var link = don.querySelector('tbody tr:nth-child(2) td center div a').href;
                 var epis = don.querySelector('tbody tr:nth-child(3) td:nth-child(2) headline2').textContent.trim().replaceAll('\\n','');
                 var type = don.querySelector('tbody tr:nth-child(3) td:nth-child(3) headline2 font').textContent.trim();
                 link = new ModuleRequest(link, 'get', emptyKeyValue, null);
                 donnes.push(new Data(image, title, '',epis,type,'','',false,link));
             }
-        output.push(new Output(CellDesings.normal1, Orientation.horizontal, DefaultLayouts.longTripletsDouble, Paging.leading, new Section('Animes', true), null, donnes));
+        
+                let ok = [];
+                let dat = {};
+                            
+                for (let i in donnes) {
+                    compare = donnes[i].title;
+                    compa  = donnes[i].type;
+                    dat[compare] = donnes[i];
+                    dat[compa] = donnes[i];
+                }          
+                for (i in dat) {
+                    ok.push(dat[i]);
+                }
+                    
+
+        output.push(new Output(CellDesings.normal1, Orientation.horizontal, DefaultLayouts.longTripletsDouble, Paging.leading, new Section('Animes Récemment ajoutés :', true), null, ok));
         let MainPageObject = new MainPage(new ModuleRequest('https://www.ianimes.org/drama.php', 'get', emptyKeyValue,null),
         new Extra([new Commands('', emptyKeyValue)], emptyKeyValue), new JavascriptConfig(true,false, ''), output);
         var finalJson = JSON.stringify(MainPageObject);
