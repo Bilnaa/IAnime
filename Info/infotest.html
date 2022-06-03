@@ -2633,7 +2633,7 @@
         if (parsedJson.request.url.includes('manga')) {
             var title = document.querySelector('.content-inner center').textContent.trim();
             var imf = document.querySelector('.post-wrapper center div').style.backgroundImage.substr('5');
-            var image = imf.substr(0, 67);
+            var image = mg.split(')')[0].trim().replace('\"', '');
             image = new ModuleRequest(image, 'get', emptyKeyValue, null);
             var test = document.querySelectorAll('fieldset');
             var desc = test[1].querySelector('font').textContent.replaceAll('\\n', '');
@@ -2652,7 +2652,7 @@
                         if (c.textContent.includes(',')) {
                             genres = c.textContent.trim().split(',');
                         }
-                        if (c.textContent.includes('Série') || c.textContent.includes('Episode')) {
+                        if (c.textContent.includes('Tv') || c.textContent.includes('Episode')) {
                                 var type = c.textContent.trim();
                         }
                     }
