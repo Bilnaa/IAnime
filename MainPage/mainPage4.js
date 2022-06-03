@@ -215,7 +215,15 @@
         }
     }
 
-    output.push(new Output(CellDesings.wide11, Orientation.horizontal, DefaultLayouts.wideFull, Paging.leading, new Section('Le top 30 Animes :', true), null, donnes));
+    var final = donnes.reduce((unique, o) => {
+        if(!unique.some(obj => obj.title === o.title && obj.type === o.type)) {
+          unique.push(o);
+        }
+        return unique;
+    },[]);
+    console.log(result);
+
+    output.push(new Output(CellDesings.wide11, Orientation.horizontal, DefaultLayouts.wideFull, Paging.leading, new Section('Le top 30 Animes :', true), null, final));
     let MainPageObject = new MainPage(new ModuleRequest('https://www.ianimes.org/index.php', 'get', emptyKeyValue,null),
     new Extra([new Commands('', emptyKeyValue)], emptyKeyValue),
     new JavascriptConfig(true,false, ''), output);
