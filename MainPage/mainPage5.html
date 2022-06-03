@@ -2671,8 +2671,10 @@
                 let dat = {};
                             
                 for (let i in donnes) {
-                    compare = donnes[i].title
+                    compare = donnes[i].title;
+                    compa  = donnes[i].type;
                     dat[compare] = donnes[i];
+                    dat[compa] = donnes[i];
                 }          
                 for (i in dat) {
                     ok.push(dat[i]);
