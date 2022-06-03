@@ -2655,10 +2655,8 @@
         let emptyKeyValue = [new KeyValue('', '')];
         var dat = [];
         var donnes = [];
-        var rec = document.querySelectorAll('#my_poststypewidget-3 center table');
-        for (i = 0; i < rec.length; i++) {
-            var dat = rec[i].querySelectorAll('tbody');
-            for (don of dat) {
+        var rec = document.querySelectorAll('#my_poststypewidget-3 center table tbody');
+            for (don of rec) {
                 var mg = don.querySelector('tbody tr:nth-child(2) td center div').style.backgroundImage.substr(5);
                 var image = mg.split(')')[0].trim().replace('\"', '');
                 image = new ModuleRequest(image, 'get', emptyKeyValue, null);
@@ -2669,7 +2667,6 @@
                 link = new ModuleRequest(link, 'get', emptyKeyValue, null);
                 donnes.push(new Data(image, title, '',epis,type,'','',false,link));
             }
-        }
         output.push(new Output(CellDesings.normal1, Orientation.horizontal, DefaultLayouts.longTripletsDouble, Paging.leading, new Section('Animes', true), null, donnes));
         let MainPageObject = new MainPage(new ModuleRequest('https://www.ianimes.org/drama.php', 'get', emptyKeyValue,null),
         new Extra([new Commands('', emptyKeyValue)], emptyKeyValue), new JavascriptConfig(true,false, ''), output);
